@@ -1,0 +1,118 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Images\backarrow%402x.png" />
+    <None Remove="Assets\Images\backarrow%403x.png" />
+    <None Remove="Assets\Images\backarrow.png" />
+    <None Remove="Assets\Images\banner%402x.png" />
+    <None Remove="Assets\Images\banner%403x.png" />
+    <None Remove="Assets\Images\banner.png" />
+    <None Remove="Assets\Images\cart%402x.png" />
+    <None Remove="Assets\Images\cart%403x.png" />
+    <None Remove="Assets\Images\cart.png" />
+    <None Remove="Assets\Images\close%402x.png" />
+    <None Remove="Assets\Images\close%403x.png" />
+    <None Remove="Assets\Images\close.png" />
+    <None Remove="Assets\Images\contact%402x.png" />
+    <None Remove="Assets\Images\contact%403x.png" />
+    <None Remove="Assets\Images\contact.png" />
+    <None Remove="Assets\Images\Default%402x.png" />
+    <None Remove="Assets\Images\Default-568h%402x.png" />
+    <None Remove="Assets\Images\Default-Portrait%402x.png" />
+    <None Remove="Assets\Images\Default-Portrait.png" />
+    <None Remove="Assets\Images\Default.png" />
+    <None Remove="Assets\Images\kfc%402x.png" />
+    <None Remove="Assets\Images\kfc%403x.png" />
+    <None Remove="Assets\Images\kfc.png" />
+    <None Remove="Assets\Images\LaunchScreen.storyboard" />
+    <None Remove="Assets\Images\logout%402x.png" />
+    <None Remove="Assets\Images\logout%403x.png" />
+    <None Remove="Assets\Images\logout.png" />
+    <None Remove="Assets\Images\menu%402x.png" />
+    <None Remove="Assets\Images\menu%403x.png" />
+    <None Remove="Assets\Images\menu.png" />
+    <None Remove="Assets\Images\minus%402x.png" />
+    <None Remove="Assets\Images\minus%403x.png" />
+    <None Remove="Assets\Images\minus.png" />
+    <None Remove="Assets\Images\order%402x.png" />
+    <None Remove="Assets\Images\order%403x.png" />
+    <None Remove="Assets\Images\order.png" />
+    <None Remove="Assets\Images\plus%402x.png" />
+    <None Remove="Assets\Images\plus%403x.png" />
+    <None Remove="Assets\Images\plus.png" />
+    <None Remove="Assets\Images\shopping_cart%402x.png" />
+    <None Remove="Assets\Images\shopping_cart%403x.png" />
+    <None Remove="Assets\Images\shopping_cart.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\backarrow.png" />
+    <EmbeddedResource Include="Assets\Images\backarrow@2x.png" />
+    <EmbeddedResource Include="Assets\Images\backarrow@3x.png" />
+    <EmbeddedResource Include="Assets\Images\banner.png" />
+    <EmbeddedResource Include="Assets\Images\banner@2x.png" />
+    <EmbeddedResource Include="Assets\Images\banner@3x.png" />
+    <EmbeddedResource Include="Assets\Images\cart.png" />
+    <EmbeddedResource Include="Assets\Images\cart@2x.png" />
+    <EmbeddedResource Include="Assets\Images\cart@3x.png" />
+    <EmbeddedResource Include="Assets\Images\close.png" />
+    <EmbeddedResource Include="Assets\Images\close@2x.png" />
+    <EmbeddedResource Include="Assets\Images\close@3x.png" />
+    <EmbeddedResource Include="Assets\Images\contact.png" />
+    <EmbeddedResource Include="Assets\Images\contact@2x.png" />
+    <EmbeddedResource Include="Assets\Images\contact@3x.png" />
+    <EmbeddedResource Include="Assets\Images\Default-568h@2x.png" />
+    <EmbeddedResource Include="Assets\Images\Default-Portrait.png" />
+    <EmbeddedResource Include="Assets\Images\Default-Portrait@2x.png" />
+    <EmbeddedResource Include="Assets\Images\Default.png" />
+    <EmbeddedResource Include="Assets\Images\Default@2x.png" />
+    <EmbeddedResource Include="Assets\Images\kfc.png" />
+    <EmbeddedResource Include="Assets\Images\kfc@2x.png" />
+    <EmbeddedResource Include="Assets\Images\kfc@3x.png" />
+    <EmbeddedResource Include="Assets\Images\LaunchScreen.storyboard" />
+    <EmbeddedResource Include="Assets\Images\logout.png" />
+    <EmbeddedResource Include="Assets\Images\logout@2x.png" />
+    <EmbeddedResource Include="Assets\Images\logout@3x.png" />
+    <EmbeddedResource Include="Assets\Images\menu.png" />
+    <EmbeddedResource Include="Assets\Images\menu@2x.png" />
+    <EmbeddedResource Include="Assets\Images\menu@3x.png" />
+    <EmbeddedResource Include="Assets\Images\minus.png" />
+    <EmbeddedResource Include="Assets\Images\minus@2x.png" />
+    <EmbeddedResource Include="Assets\Images\minus@3x.png" />
+    <EmbeddedResource Include="Assets\Images\order.png" />
+    <EmbeddedResource Include="Assets\Images\order@2x.png" />
+    <EmbeddedResource Include="Assets\Images\order@3x.png" />
+    <EmbeddedResource Include="Assets\Images\plus.png" />
+    <EmbeddedResource Include="Assets\Images\plus@2x.png" />
+    <EmbeddedResource Include="Assets\Images\plus@3x.png" />
+    <EmbeddedResource Include="Assets\Images\shopping_cart.png" />
+    <EmbeddedResource Include="Assets\Images\shopping_cart@2x.png" />
+    <EmbeddedResource Include="Assets\Images\shopping_cart@3x.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\HomePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PlaceOrder.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

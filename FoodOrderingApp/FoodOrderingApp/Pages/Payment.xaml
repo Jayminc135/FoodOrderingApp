@@ -4,8 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="FoodOrderingApp.Pages.PlaceOrder"
-             BackgroundColor="#F7F5F4">
+             x:Class="FoodOrderingApp.Pages.Payment">
     <ContentPage.Content>
         <StackLayout Spacing="20"
                      Margin="25">
@@ -15,9 +14,16 @@
                     <ColumnDefinition Width="8*" />
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
-                
+                <Image x:Name="backarrow"
+                       HeightRequest="25"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
                 <Label Grid.Column="1"
-                       TextColor="#CE0B06"
+                       TextColor="Purple"
                        Text="PLACE ORDER"
                        FontSize="Large"
                        FontAttributes="Bold"
@@ -33,27 +39,21 @@
                            FontAttributes="Bold"
                            FontSize="Large"
                            HorizontalTextAlignment="Center"
-                           TextColor="#CE0B06" />
-                    <Entry Placeholder="Name"
-                           PlaceholderColor="#80574D"
-                           TextColor="#80574D"
+                           TextColor="Purple" />
+                    <Entry Placeholder="Full Name"
                            x:Name="EntName"
                            Keyboard="Text" />
-                    <Entry Placeholder="Phone"
-                           PlaceholderColor="#80574D"
-                           TextColor="#80574D"
+                    <Entry Placeholder="Phone Number"
                            x:Name="EntPhone"
                            Keyboard="Numeric" />
                     <Editor Placeholder="Address"
                             HeightRequest="100"
-                            PlaceholderColor="#80574D"
-                            TextColor="#80574D"
                             x:Name="EntAddress"
                             Keyboard="Default" />
                 </StackLayout>
             </Frame>
             <Button Text="Place My Order"
-                    BackgroundColor="#CE0B06"
+                    BackgroundColor="Purple"
                     TextColor="White"
                     x:Name="BtnPlaceOrder" 
                     Clicked="BtnPlaceOrder_Clicked"/>

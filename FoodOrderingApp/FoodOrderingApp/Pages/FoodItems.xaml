@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FoodOrderingApp.Pages.FoodItems">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image x:Name="backarrow"
+                       Grid.Column="0"
+                       HorizontalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer x:Name="TapBack" Tapped="TapBack_Tapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="Restaurant_name"
+                       Grid.Column="1"
+                       TextColor="Purple"
+                       FontSize="Large"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" />
+            </Grid>
+            <CollectionView x:Name="CvFoods"
+                            SelectionMode="Single"
+                            SelectionChanged="CvFoods_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="5"
+                                     Padding="10"
+                                     Margin="15,0,15,0"
+                                     Orientation="Vertical">
+                            <Image Aspect="Fill"
+                                   BackgroundColor="White"
+                                   HeightRequest="150"
+                                   WidthRequest="150"
+                                   Source="{Binding Imageurl}"/>
+                            <Label TextColor="Black"
+                                   FontAttributes="Bold"
+                                   Text="{Binding Food_Name}"/>
+                            <Label TextColor="Black"
+                                   Text="{Binding Price ,StringFormat='₹{0}'}"/>
+                            <!--<Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontAttributes="Bold" Text="{Binding Food_Name}"/>
+                                        <Span Text="{Binding Price, StringFormat='₹{0}'}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

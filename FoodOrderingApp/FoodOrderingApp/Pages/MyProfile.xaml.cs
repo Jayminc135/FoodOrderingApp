@@ -10,22 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace FoodOrderingApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PlaceOrder : ContentPage
+    public partial class MyProfile : ContentPage
     {
-  
-        private double _totalPrice;
-        public PlaceOrder(double totalPrice)
+        public MyProfile()
         {
             InitializeComponent();
-            _totalPrice = totalPrice;
         }
-
-
-        private void BtnPlaceOrder_Clicked(object sender, EventArgs e)
-        {
-            
-        }
-
-        
     }
 }

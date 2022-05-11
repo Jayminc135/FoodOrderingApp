@@ -17,25 +17,30 @@ namespace FoodOrderingApp.Pages
         public Login()
         {
             InitializeComponent();
+            var assembly = typeof(Login);
+            backarrow.Source = ImageSource.FromResource("FoodOrderingApp.Assets.Images.backarrow.png", assembly);
         }
 
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
-            Preferences.Set("Email", EntEmail.Text);
-            Preferences.Set("Password", EntPassword.Text);
-
             if (string.IsNullOrEmpty(EntEmail.Text) || string.IsNullOrEmpty(EntPassword.Text))
             {
                 await DisplayAlert("Failure", "Enter valid data", "Ok");
             }
             else
             {
+                Preferences.Set("Email", EntEmail.Text);
+                Preferences.Set("Password", EntPassword.Text);
+
                 SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
                 conn.CreateTable<Signupdb>();
+                var myname = conn.Table<Signupdb>().Where(u => u.UserEmail.Equals(EntEmail.Text) && u.UserPassword.Equals(EntPassword.Text)).ToList();
                 var myquery = conn.Table<Signupdb>().Where(u => u.UserEmail.Equals(EntEmail.Text) && u.UserPassword.Equals(EntPassword.Text)).Any();
+                conn.Close();
 
                 if(myquery)
                 {
+                    Preferences.Set("Name", myname.FirstOrDefault().UserName);
                     Application.Current.MainPage = new NavigationPage(new HomePage());
                 }
                 else

@@ -2,15 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:fRating="clr-namespace:Rating;assembly=Rating"
              mc:Ignorable="d"
              x:Class="FoodOrderingApp.Pages.HomePage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid>
-            <CollectionView x:Name="CvProducts"
+            <CollectionView x:Name="CvRestaurants"
                             SelectionMode="Single"
-                            SelectionChanged="CvProducts_SelectionChanged">
+                            SelectionChanged="CvRestaurants_SelectionChanged">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout Orientation="Vertical"
                                      Span="2" />
@@ -18,13 +18,11 @@
                 <CollectionView.Header>
                     <StackLayout>
                         <Label Margin="15,170,15,0"
-                               Text="Our Menu"
+                               Text="Popular Items"
                                TextColor="Black"
-                               FontSize="Medium" />
-                        <CollectionView  x:Name="CvCategories"
-                                         HeightRequest="130"
-                                         SelectionMode="Single"
-                                         SelectionChanged="CvCategories_SelectionChanged">
+                               FontSize="Large"/>
+                        <CollectionView  x:Name="CvPopularItems"
+                                         HeightRequest="130">
                             <CollectionView.ItemsLayout>
                                 <LinearItemsLayout Orientation="Horizontal" />
                             </CollectionView.ItemsLayout>
@@ -45,12 +43,12 @@
                                                     <Image Aspect="AspectFill"
                                                            HorizontalOptions="FillAndExpand"
                                                            VerticalOptions="FillAndExpand"
-                                                           Source="{Binding FullImageUrl}"/>
+                                                           Source="{Binding Imageurl}"/>
                                                 </Frame>
-                                                <Label TextColor="#B00905"
+                                                <Label TextColor="Purple"
                                                        HorizontalTextAlignment="Center"
                                                        FontSize="Medium"
-                                                       Text="{Binding name}"/>
+                                                       Text="{Binding Food_Name}"/>
                                             </StackLayout>
                                         </Frame>
                                     </StackLayout>
@@ -58,9 +56,9 @@
                             </CollectionView.ItemTemplate>
                         </CollectionView>
                         <Label Margin="15,15,15,0"
-                               Text="Popular Products"
+                               Text="Nearby Restaurants"
                                TextColor="Black"
-                               FontSize="Medium" />
+                               FontSize="Large"/>
                     </StackLayout>
                 </CollectionView.Header>
                 <CollectionView.ItemTemplate>
@@ -69,14 +67,27 @@
                                      Padding="10"
                                      Margin="15,0,15,0"
                                      Orientation="Vertical">
-                            <Image Aspect="Fill"
+                            <Image Aspect="AspectFit"
                                    HeightRequest="150"
                                    WidthRequest="150"
-                                   Source="{Binding FullImageUrl}"/>
-                            <Label TextColor="#000000"
-                                   Text="{Binding name}"/>
-                            <Label TextColor="#B00905"
-                                   Text="{Binding price ,StringFormat='${0}'}"/>
+                                   Source="{Binding Imageurl}"/>
+                            <Label TextColor="Black"
+                                   FontAttributes="Bold"
+                                   Text="{Binding Restaurant_Name}"/>
+                            <Label TextColor="Black"
+                                   Text="{Binding Distance ,StringFormat='{0} away'}"/>
+                            <Label TextColor="Purple" 
+                                   FontAttributes="Bold"
+                                   Text="{Binding Rating ,StringFormat='{0}★'}"/>
+                            <!--<fRating:RatingBar x:Name="Rating"
+                               SelectedStarValue="{Binding Rating}"
+                               ImageHeight="30"
+                               ImageWidth="30"
+                               HorizontalOptions="Center"
+                               FlowDirection="LeftToRight"
+                               EmptyStarImage="emptystar"
+                               FillStarImage="fillstar">
+                            </fRating:RatingBar>-->
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -139,7 +150,7 @@
                                Grid.Row="0"
                                Grid.Column="1"
                                Grid.RowSpan="2"
-                               BackgroundColor="#CE0B06">
+                               BackgroundColor="Purple">
                             <Label x:Name="LblTotalItems"
                                    VerticalTextAlignment="Center"
                                    HorizontalTextAlignment="Center"
@@ -155,7 +166,7 @@
                 <Image Margin="0,15,0,0"
                        HorizontalOptions="CenterAndExpand"
                        VerticalOptions="CenterAndExpand"
-                       x:Name="kfc"
+                       x:Name="AppIcon"
                        Aspect="AspectFit"
                        Grid.Row="0"
                        Grid.Column="1"
@@ -170,13 +181,13 @@
                 </Grid.ColumnDefinitions>
                 <StackLayout BackgroundColor="White"
                              x:Name="SlMenu">
-                    <Grid BackgroundColor="#CE0B06"
+                    <Grid BackgroundColor="Purple"
                           HeightRequest="120">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="4*" />
                             <ColumnDefinition Width="6*" />
                         </Grid.ColumnDefinitions>
-                        <Image x:Name="Kfc"
+                        <Image x:Name="Appicon"
                                Margin="5"
                                VerticalOptions="Center" />
                         <StackLayout Grid.Column="1"
@@ -186,7 +197,7 @@
                             <Label Text="Welcome"
                                    FontSize="Large"
                                    TextColor="White" />
-                            <Label x:Name="LblUserName"
+                            <Label x:Name="Username"
                                    FontSize="Small"
                                    TextColor="White" />
                         </StackLayout>
@@ -198,7 +209,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="My Orders"
-                               TextColor="#80574D"
+                               TextColor="Purple"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -212,8 +223,8 @@
                         <Image x:Name="shopping_cart"
                                HeightRequest="30"
                                WidthRequest="30" />
-                        <Label Text="Cart"
-                               TextColor="#80574D"
+                        <Label Text="My Cart"
+                               TextColor="Purple"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -224,16 +235,16 @@
                     <StackLayout Spacing="30"
                                  Orientation="Horizontal"
                                  Margin="20,0,0,0">
-                        <Image x:Name="contact"
+                        <Image x:Name="profile"
                                HeightRequest="30"
                                WidthRequest="30" />
-                        <Label Text="Contact"
-                               TextColor="#80574D"
+                        <Label Text="My Profile"
+                               TextColor="Purple"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer x:Name="TapContact" Tapped="TapContact_Tapped"/>
+                            <TapGestureRecognizer x:Name="TapProfile" Tapped="TapProfile_Tapped"/>
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <StackLayout Spacing="30"
@@ -243,7 +254,7 @@
                                HeightRequest="30"
                                WidthRequest="30" />
                         <Label Text="Logout"
-                               TextColor="#80574D"
+                               TextColor="Purple"
                                HeightRequest="50"
                                VerticalTextAlignment="Center"
                                FontSize="20" />
@@ -260,5 +271,10 @@
                 </BoxView>
             </Grid>
         </Grid>
+        <!--<StackLayout>
+            <Image Source="https://www.vegrecipesofindia.com/wp-content/uploads/2020/11/pizza-recipe.jpg"
+                   HeightRequest="100"
+                   Margin="10,100,250,100"/>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

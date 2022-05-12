@@ -2,6 +2,9 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FoodOrderingApp.Pages;
+using SQLite;
+using FoodOrderingApp.Model;
+
 namespace FoodOrderingApp
 {
     public partial class App : Application
@@ -11,14 +14,38 @@ namespace FoodOrderingApp
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Signup());
+            SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+            conn.CreateTable<Logindb>();
+            int res = conn.Table<Logindb>().Count();
+            conn.Close();
+
+            if (res > 0)
+            {
+                MainPage = new NavigationPage(new HomePage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new Signup());
+            }
         }
 
         public App(string databaseLocation)
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Signup());
+            SQLiteConnection conn = new SQLiteConnection(App.DatabaseLocation);
+            conn.CreateTable<Logindb>();
+            int res = conn.Table<Logindb>().Count();
+            conn.Close();
+
+            if (res > 0)
+            {
+                MainPage = new NavigationPage(new HomePage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new Signup());
+            }
 
             DatabaseLocation = databaseLocation;
         }

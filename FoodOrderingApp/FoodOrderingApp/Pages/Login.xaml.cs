@@ -38,9 +38,20 @@ namespace FoodOrderingApp.Pages
                 var myquery = conn.Table<Signupdb>().Where(u => u.UserEmail.Equals(EntEmail.Text) && u.UserPassword.Equals(EntPassword.Text)).Any();
                 conn.Close();
 
-                if(myquery)
+                if (myquery)
                 {
                     Preferences.Set("Name", myname.FirstOrDefault().UserName);
+                    //Preferences.Set("loggedin", 1);
+
+                    SQLiteConnection conn2 = new SQLiteConnection(App.DatabaseLocation);
+                    conn2.CreateTable<Logindb>();
+                    var login = new Logindb
+                    {
+                        UserLoggedin = 1
+                    };
+                    int res = conn2.Insert(login);
+                    conn2.Close();
+
                     Application.Current.MainPage = new NavigationPage(new HomePage());
                 }
                 else
